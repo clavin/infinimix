@@ -1,0 +1,7 @@
+node_modules/
+
+# Only built files should live in this directory.
+public/
+
+# Ffmpeg binaries live in this directory. See `lib/setupFfmpeg.js`.
+vendor/ffmpeg/

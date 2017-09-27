@@ -1,0 +1,19 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": false,
+    "browser": true
+  },
+
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "../.eslintrc",
+    "plugin:react/recommended"
+  ]
+}
