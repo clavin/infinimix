@@ -8,6 +8,10 @@
     "node": false,
     "browser": true
   },
+  "globals": {
+    "module": false,
+    "require": false
+  },
 
   "plugins": [
     "react"
@@ -15,5 +19,9 @@
   "extends": [
     "../.eslintrc",
     "plugin:react/recommended"
-  ]
+  ],
+
+  "rules": {
+    "react/display-name": "off"
+  }
 }

@@ -1,5 +1,11 @@
 const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
 const ytdl = require('ytdl-core');
+
+/** Whether the server is running in development mode. */
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 /** The maximum allowed length of a video. */
 const MaxYouTubeLength = 60 * 15;
@@ -10,6 +16,32 @@ const app = express();
 
 // Publish everything in the `public/` directory.
 app.use(express.static('./public'));
+
+// Add the development middleware if we're running in dev mode.
+if (isDevelopment) {
+  const webpackConfig = require('./webpack.config.js');
+
+  // Make sure the entrypoint is an array.
+  if (!Array.isArray(webpackConfig.entry))
+    webpackConfig.entry = [webpackConfig.entry];
+
+  // Put hot reloading entrypoints into config.
+  webpackConfig.entry.splice(
+    webpackConfig.entry.length - 1,
+    0,
+    'react-hot-loader/patch'
+  );
+  webpackConfig.entry.splice(
+    webpackConfig.entry.length - 1,
+    0,
+    'webpack-hot-middleware/client'
+  );
+
+  const webpackCompiler = webpack(webpackConfig);
+
+  app.use(webpackDevMiddleware(webpackCompiler, webpackConfig.devServer));
+  app.use(webpackHotMiddleware(webpackCompiler));
+}
 
 // Proxy the song with the given id to the client (same-origin policy restricts this on the client).
 app.get('/api/yt/song/:id', (req, res) => {
