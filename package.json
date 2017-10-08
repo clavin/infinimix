@@ -19,6 +19,7 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "streamifier": "^0.1.1",
+    "styled-components": "^2.2.1",
     "ytdl-core": "^0.17.1"
   },
   "devDependencies": {
