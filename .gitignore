@@ -2,6 +2,3 @@ node_modules/
 
 # Only built files should live in this directory.
 public/
-
-# Ignore .env file since it contains configuration and private info (api keys, for instance).
-.env

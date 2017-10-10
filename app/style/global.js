@@ -15,6 +15,7 @@ injectGlobal`
   body {
     background-color: ${styles.color.background.main};
     color: ${styles.color.text.main};
+    min-width: 20rem;
     margin: 0;
     font-family: 'PT Sans', sans-serif;
   }

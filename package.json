@@ -18,6 +18,7 @@
     "express": "^4.16.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
     "streamifier": "^0.1.1",
     "styled-components": "^2.2.1",
     "ytdl-core": "^0.17.1"
