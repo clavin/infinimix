@@ -48,7 +48,7 @@ module.exports = {
             'react',
             ['env', { targets: { browsers: ['last 2 versions'] } }]
           ],
-          plugins: ['react-hot-loader/babel']
+          plugins: ['react-hot-loader/babel', 'transform-class-properties']
         }
       }
     ]

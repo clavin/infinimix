@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
 import styles from '../style/';
 
 const Header = styled.header`
@@ -14,7 +12,7 @@ const Header = styled.header`
   height: 5em;
 `;
 
-const HeaderTitle = styled(Link)`
+const HeaderTitle = styled.a`
   font-family: 'Righteous', cursive;
   font-size: 2em;
   letter-spacing: 0.5em;
@@ -26,7 +24,7 @@ const HeaderTitle = styled(Link)`
 export default () => (
   <Header>
     <div>
-      <HeaderTitle to='/'>infinimix</HeaderTitle>
+      <HeaderTitle href='/'>infinimix</HeaderTitle>
     </div>
   </Header>
 );

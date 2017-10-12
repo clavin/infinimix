@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-
 import styles from './';
 
-export default styled(Link)`
+export default styled.a`
   color: ${styles.color.text.highlight};
   text-decoration: none;
 

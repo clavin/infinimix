@@ -1,5 +1,4 @@
 import { injectGlobal } from 'styled-components';
-
 import styles from './';
 
 // Why is this file separate from everything else when all it does is just call a function?
@@ -13,7 +12,7 @@ injectGlobal`
   @import url('https://fonts.googleapis.com/css?family=PT+Sans|Righteous');
 
   body {
-    background-color: ${styles.color.background.main};
+    background-color: ${styles.color.background.body};
     color: ${styles.color.text.main};
     min-width: 20rem;
     margin: 0;

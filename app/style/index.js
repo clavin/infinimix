@@ -19,14 +19,24 @@ for (const key of Object.keys(breakpoints)) {
 export default {
   color: {
     background: {
-      main: '#181824',
-      header: '#0C0C12'
+      body: '#181824',
+      header: '#0C0C12',
+      footer: '#12121B',
+      content: '#303048'
     },
     text: {
       main: '#DDDDEE',
       highlight: '#00BBFF',
       faded: '#555566'
-    }
+    },
+    button: {
+      default: '#1188CC'
+    },
+    selector: {
+      background: '#202030',
+      outline: '#1188CC'
+    },
+    textArea: '#202030'
   },
   breakpoints
 };
