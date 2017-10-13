@@ -2,13 +2,15 @@ import { EventEmitter } from 'events';
 
 import detectBPM from './detectBPM';
 
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+
 export default class Song extends EventEmitter {
   constructor() {
     super();
 
     this.context = new AudioContext();
-    this.pcm = null;
-    this.bpm = -1;
+    this.audioBuffer = null;
+    this.beats = null;
 
     this.ready = false;
     this.status = '';
@@ -28,13 +30,14 @@ export default class Song extends EventEmitter {
         this._updateStatus('Getting PCM of song data');
         return this.decodeAudioData(songData);
       })
-      .then((pcmData) => {
-        this.pcm = pcmData;
+      .then((audioBuffer) => {
+        this.audioBuffer = audioBuffer;
         this._updateStatus('Getting BPM of song');
-        return detectBPM(pcmData);
+        return detectBPM(audioBuffer);
       })
-      .then((bpm) => {
-        this.bpm = bpm;
+      .then((beats) => {
+        console.log(beats);
+        this.beats = beats;
         this._updateStatus('Analyzing beats');
         // TODO:
       })
