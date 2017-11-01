@@ -1,0 +1,83 @@
+{
+	"extends": "tslint:recommended",
+	"rules": {
+        "await-promise": true,
+        "ban-comma-operator": true,
+        "binary-expression-operand-order": true,
+        "completed-docs": [ // Literally crazy with documentation 👌
+            true,
+            {
+                "classes": { "visibilities": "all" },
+                "enums": { "visibilities": "all" },
+                "enum-members": { "visibilities": "all" },
+                "functions": { "visibilities": "all" },
+                "interfaces": { "visibilities": "all" },
+                "methods": {
+                    "privacies": "all",
+                    "locations": "all"
+                },
+                "namespaces": { "visibilities": "all" },
+                "properties": {
+                    "privacies": "all",
+                    "locations": "all"
+                },
+                "types": { "visibilities": "all" },
+                "variables": { "visibilities": "all" }
+            }
+        ],
+        "deprecation": true,
+        "jsdoc-format": [true, "check-multiline-start"],
+        "indent": [true, "spaces", 4],
+        "linebreak-style": [true, "CRLF"],
+        "match-default-export-name": true,
+        "member-ordering": [true, { "order": "instance-sandwich" }],
+        "no-bitwise": false,
+        "no-boolean-literal-compare": true,
+        "no-duplicate-imports": true,
+        "no-duplicate-switch-case": true,
+        "no-duplicate-variable": true,
+        "no-floating-promises": true,
+        "no-for-in-array": true,
+        "no-invalid-this": true,
+        "no-null-keyword": true, // Use undefined instead.
+        "no-parameter-properties": true, // Simply to keep things clean (though I do like the Dart-esque feeling).
+        "no-redundant-jsdoc": true,
+        "no-return-await": true,
+        "no-sparse-arrays": true,
+        "no-switch-case-fall-through": true,
+        "no-unnecessary-callback-wrapper": true,
+        "no-unnecessary-class": true,
+        "no-unsafe-any": true,
+        "no-unused-variable": true,
+        "no-use-before-declare": true,
+        "number-literal-format": true,
+        "prefer-conditional-expression": true,
+        "prefer-function-over-method": true,
+        "prefer-method-signature": true,
+        "prefer-object-spread": true,
+        "prefer-switch": true,
+        "promise-function-async": true,
+        "quotemark": [true, "single", "jsx-double"],
+        "restrict-plus-operands": true,
+        "strict-boolean-expressions": true,
+        "switch-default": true,
+        "switch-final-break": [true, "always"],
+        "trailing-comma": [true, "never"],
+        "typedef": [
+            true,
+            "call-signature",
+            "parameter",
+            "property-declaration",
+            "variable-declaration",
+            "member-variable-declaration",
+            "object-descructuring",
+            "array-descructuring"
+        ],
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-leading-underscore"
+        ]
+	}
+}

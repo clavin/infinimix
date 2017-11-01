@@ -1,62 +1,57 @@
 const path = require('path');
 
-const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
+/**
+ * Determines various aspects of the bundle, including plugins and minification. Comparison checks the `NODE_ENV`
+ * environment variable to be `"production"`; a false negative (i.e. being false when env is something like `"prod"`) is
+ * better than a false positive.
+ */
 const isProduction = process.env.NODE_ENV === 'production';
 
+/** The plugins used to compile the bundle(s). Varies based on `isProduction`. */
 const plugins = [
-  new CleanWebpackPlugin(path.resolve(__dirname, 'public')),
-  new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'app/index.template.html') })
+    // Clean up the `public/` directory before outputting.
+    new CleanWebpackPlugin(path.resolve(__dirname, 'public')),
+
+    // Generate an html file from the given template. Automatically adds output to html file.
+    new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'app/index.template.html') })
 ];
 
+// Apply different plugins to the bundle(s) based on the target environment.
 if (isProduction) {
-  // Production-only plugins.
-  plugins.push(
-    new webpack.optimize.UglifyJsPlugin()
-  );
-} else {
-  // Development-only plugins.
-  plugins.push(
-    new webpack.HotModuleReplacementPlugin()
-  );
+    plugins.push(
+        new webpack.optimize.UglifyJsPlugin()
+    );
 }
 
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    path.resolve(__dirname, 'app/main.jsx')
-  ],
-  output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'bundle.js'
-  },
+    entry: [
+        'babel-polyfill',
+        path.resolve(__dirname, 'app/main.tsx')
+    ],
+    output: {
+        path: path.resolve(__dirname, 'public'),
+        filename: 'bundle.js'
+    },
 
-  resolve: {
-    extensions: ['.jsx', '.js', '.json']
-  },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.json']
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        include: [path.resolve(__dirname, 'app')],
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            'react',
-            ['env', { targets: { browsers: ['last 2 versions'] } }]
-          ],
-          plugins: ['react-hot-loader/babel', 'transform-class-properties']
-        }
-      }
-    ]
-  },
-  plugins: plugins,
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                loader: 'awesome-typescript-loader',
+                options: {
+                    configFileName: path.resolve(__dirname, 'app/tsconfig.json')
+                }
+            }
+        ]
+    },
 
-  devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
-    hot: true
-  }
+    plugins
 };
