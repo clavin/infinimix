@@ -16,11 +16,21 @@ const plugins = [
     // Clean up the `public/` directory before outputting.
     new CleanWebpackPlugin(path.resolve(__dirname, 'public')),
 
-    // Generate an html file from the given template. Automatically adds output to html file.
-    new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'app/index.template.html') })
+    // Generate an html file from the given template. Automatically adds output to html file. The generated file is
+    // minified if we're compiling for production.
+    new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, 'app/index.template.html'),
+        minify: isProduction ? {
+            collapseBooleanAttributes: true,
+            collapseWhitespace: true,
+            removeComments: true,
+            useShortDoctype: true
+        } : false
+    })
 ];
 
-// Apply different plugins to the bundle(s) based on the target environment.
+// Apply different plugins to the bundle(s) based on the target environment. Note that certain production-only changes
+// to bundling were made earlier too, i.e. minification of the generated html file.
 if (isProduction) {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin()
