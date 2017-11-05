@@ -21,8 +21,8 @@
     "scripts": {
         "start": "npm run build:prod && npm run server:prod",
         "test": "alsatian",
-        "server:prod": "cross-env NODE_ENV=production ts-node --project lib/ lib/server.ts",
-        "server:dev": "cross-env NODE_ENV=development ts-node --project lib/ lib/server.ts",
+        "server:prod": "cross-env NODE_ENV=production ts-node lib/server.ts",
+        "server:dev": "cross-env NODE_ENV=development ts-node lib/server.ts",
         "build:prod": "cross-env NODE_ENV=production webpack",
         "build:dev": "cross-env NODE_ENV=development webpack",
         "watch": "cross-env NODE_ENV=development webpack --watch"
@@ -40,10 +40,10 @@
     },
     "devDependencies": {
         "@types/express": "^4.0.39",
-        "@types/react": "^16.0.19",
+        "@types/react": "^16.0.20",
         "@types/react-dom": "^16.0.2",
         "alsatian": "^2.0.0",
-        "awesome-typescript-loader": "^3.2.3",
+        "awesome-typescript-loader": "^3.3.0",
         "clean-webpack-plugin": "^0.1.17",
         "cross-env": "^5.1.1",
         "html-webpack-plugin": "^2.30.1",

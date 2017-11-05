@@ -68,7 +68,6 @@
             "call-signature",
             "parameter",
             "property-declaration",
-            "variable-declaration",
             "member-variable-declaration",
             "object-descructuring",
             "array-descructuring"
