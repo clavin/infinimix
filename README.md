@@ -38,7 +38,7 @@ productive.
 * [ ] Flowchart the whole application flow.
   * I feel it becomes simply a matter of sitting down and implementing once all the details are figured out. A flowchart
     is an amazing way to get those nitty-gritty details resolved so the journey of implementation is smooth sailing.
-* [ ] Reimplement the server, similar to the prototype, but a bit more modularly for testing reasons.
+* [x] Reimplement the server, similar to the prototype, but a bit more modularly for testing reasons.
 * [ ] Add test code for server functions.
 * [ ] Reimplement the UI similar to the prototype, up to the internals of audio processing (therefore before creating
   the player implementation).
