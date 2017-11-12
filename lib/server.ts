@@ -1,4 +1,5 @@
 import express = require('express');
+import * as path from 'path';
 
 import config from './config';
 import downloadFromUrl from './downloadFromUrl';
@@ -62,8 +63,13 @@ app.get('/api/yt/:id', (request, response) => {
             response.status(500).send(err instanceof Error ? err.message : err.toString()).end());
 });
 
-// Serve the static public files in `public/`
+// Serve the static public files in `public/`.
 app.use(express.static('./public/'));
+
+// Fallback all unknown URLs to index.html because routing is handled on the client.
+app.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, '../public/index.html'));
+});
 
 // And now, we're off to the internets!
 app.listen(config.port, (err: string | undefined) => {

@@ -1,9 +1,9 @@
 // You might question, "why is this a TypeScript file? isn't it better suited to be a JSON file?"
 //
 // To that, I answer, "you're correct;" however, complications come along with keeping this fine as a JSON file. Most
-// prominently, the issue of importing the JSON file is needlessly complex relative to the simple task at hand--
-// especially if type information is wanted (it's not really a necessity, but it's nice to have). To save on simplicity,
-// I've simply chosen to store the config as a TypeScript file. ¯\_(ツ)_/¯
+// prominently, the issue of importing the JSON file is needlessly complex relative to how simple it seems--
+// especially if type information is wanted (it's not really a necessity, but it's nice to have). To eliminate
+// complexity, I've simply chosen to store the config as a TypeScript file. ¯\_(ツ)_/¯
 //
 // (Also, regex.)
 
@@ -29,7 +29,7 @@ export default {
             enabled: true,
 
             /** The limit (in bytes) of the size of proxied audio files. `-1` signifies no limit. */
-            sizeLimit: 10 * 1024 * 1024,
+            sizeLimit: 12.5 * 1024 * 1024,
 
             /**
              * The regular expression that the `Content-Type` header of all proxied requests must match.
