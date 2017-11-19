@@ -5,14 +5,29 @@ import config from './config';
 import downloadFromUrl from './downloadFromUrl';
 import downloadFromYouTube from './downloadFromYouTube';
 
+import IClientConfig from '../app/IClientConfig';
+
+/** The portion of the config that's exposed to clients. */
+const clientConfig: IClientConfig = {
+    mediaProxying: {
+        YouTube: config.mediaProxying.YouTube,
+        URL: {
+            enabled: config.mediaProxying.URL.enabled,
+            sizeLimit: config.mediaProxying.URL.sizeLimit
+        }
+    }
+};
+
 /** The web application. Serves the static html page & bundle, and handles API requests. */
 const app = express();
 
 // Relay to the client any configuration variables important for functioning.
 app.get('/api/config', (request, response) => {
-    response.status(200).send({
-        mediaProxying: config.mediaProxying
-    }).end();
+    response
+        .set('Cache-Control', `max-age=${config.cacheAge}`)
+        .status(200)
+        .send(clientConfig)
+        .end();
 });
 
 // Proxy media via URL due to CORS restrictions.
@@ -64,7 +79,9 @@ app.get('/api/yt/:id', (request, response) => {
 });
 
 // Serve the static public files in `public/`.
-app.use(express.static('./public/'));
+app.use(express.static('./public/', {
+    maxAge: '30d'
+}));
 
 // Fallback all unknown URLs to index.html because routing is handled on the client.
 app.get('*', (request, response) => {

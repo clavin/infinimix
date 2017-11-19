@@ -40,6 +40,7 @@ if (isProduction) {
 module.exports = {
     entry: [
         'babel-polyfill',
+        'whatwg-fetch',
         path.resolve(__dirname, 'app/main.tsx')
     ],
     output: {

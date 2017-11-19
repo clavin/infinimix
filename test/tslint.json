@@ -1,0 +1,7 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+        "member-ordering": false,
+        "prefer-function-over-method": false
+    }
+}

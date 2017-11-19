@@ -46,5 +46,8 @@ export default {
     },
 
     /** The port the application is running on. */
-    port: 8080
+    port: 8080,
+
+    /** The amount of time this config is cached on clients for. */
+    cacheAge: 60 * 60 * 24 * 30
 };
