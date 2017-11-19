@@ -8,7 +8,7 @@ interface IButtonProps {
     fontSize?: string;
 }
 
-/** A button. */
+/** A stylized button, with a few configurable aspects. */
 export default styled.button`
     background-color: ${(props: IButtonProps) => props.color || styleVars.color.medium};
     color: #fff;

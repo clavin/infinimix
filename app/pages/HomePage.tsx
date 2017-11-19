@@ -14,6 +14,7 @@ interface IHomePageState {
     config: IClientConfig;
 }
 
+/** The initial page that is shown when a user first visits. */
 export default class HomePage extends React.Component<any, IHomePageState> {
     constructor(props: any) {
         super(props);
@@ -30,6 +31,8 @@ export default class HomePage extends React.Component<any, IHomePageState> {
     }
 
     public render(): JSX.Element {
+        // The reason that `renderPanels` isn't just injected here is because it's planned that more content may be on
+        // this page.
         return (
             <div>
                 {this.renderPanels()}

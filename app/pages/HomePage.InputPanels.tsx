@@ -10,15 +10,18 @@ import { Heading, Paragraph } from '../style/typography';
 
 import IClientConfig from '../IClientConfig';
 
+/** React Props for input panels. */
 interface IInputPanelProps {
     config: IClientConfig;
 }
 
+/** State for input panels. */
 interface IInputPanelState {
     redirect: boolean;
     redirectData: any;
 }
 
+/** An input panel that allows a user to provide a file as input. */
 export class FilePanel extends React.Component<IInputPanelProps, IInputPanelState> {
     private fileInput: HTMLInputElement;
 
@@ -64,6 +67,7 @@ export class FilePanel extends React.Component<IInputPanelProps, IInputPanelStat
     }
 }
 
+/** An input panel that allows a user to provide a YouTube URL/ID as input. */
 export class YouTubePanel extends React.Component<IInputPanelProps, IInputPanelState> {
     private textInput: HTMLInputElement;
 
@@ -117,6 +121,7 @@ export class YouTubePanel extends React.Component<IInputPanelProps, IInputPanelS
     }
 }
 
+/** An input panel that allows a user to provide a URL as input. */
 export class URLPanel extends React.Component<IInputPanelProps, IInputPanelState> {
     private textInput: HTMLInputElement;
 
@@ -170,6 +175,7 @@ export class URLPanel extends React.Component<IInputPanelProps, IInputPanelState
     }
 }
 
+/** Renders the input panels for a given configuration. */
 export const renderPanels = (config: IClientConfig) => (
     <PanelContainer>
         <FilePanel config={config} />

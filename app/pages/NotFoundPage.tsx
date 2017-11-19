@@ -43,6 +43,7 @@ const messages: INotFoundMessage[] = [
     }
 ];
 
+/** Displays a random 404 Not Found message. */
 export default () => {
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 

@@ -58,6 +58,7 @@ const ContentArea = styled.div`
 `;
 // tslint:enable:variable-name
 
+/** Sets up the generic structure of all pages (header, footer, routing). */
 export default () => (
     <div>
         <Header>

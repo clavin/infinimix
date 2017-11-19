@@ -11,6 +11,7 @@ interface ITextInputProps {
     fontSize?: string;
 }
 
+/** A stylized input element of type `"text"`, with a few configurable aspects. */
 export default styled.input`
     background-color: ${(props: ITextInputProps) => props.bgColor || styleVars.color.shaded};
     color: ${(props: ITextInputProps) => props.textColor || styleVars.color.white};
